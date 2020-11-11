@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+input[type=date], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  }
+  #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+
+</head>
+<body>
+
+  <ul>
+  
+  
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Chambres</a>
+    <div class="dropdown-content">
+      <a href="addchambre">Ajouter une chambres</a>
+      <a href="viewChambres">Gestion des chambres</a>
+    </div>
+  </li>
+
+  <li><a href="viewLocations">Locations</a></li>
+</ul>
+
+<br/>
+
+
+<table id="customers">
+  <tr>
+    <th>Numero de Chambre</th>
+    <th>Etage</th>
+    <th>Description</th>
+    <th>Tarif</th>
+    <th>Louer</th>
+    <th>Modifier</th>
+    <th>Supprimer</th>
+  </tr>
+  {% for chambre in Chambres %}
+        
+    
+  <tr>
+    <td>{{ chambre.Num }}</td>
+    <td>{{ chambre.Etage }}</td>
+    <td>{{ chambre.Description }}</td>
+    <td>{{ chambre.Tarif }}</td>
+    <td><a href = "louerChambre/{{ chambre.id }}" type = "button">Louer</a></td>
+    <td><a href = "modifierChambre/{{ chambre.id }}" type = "button">Modifier</a></td>
+    <td><a href = "deleteChambre/{{ chambre.id }}" type = "button">Supprimer</a></td>
+  </tr>
+  
+  {% endfor %}
+</table>
+
+</body>
+</html>
+
+</html>
+
+

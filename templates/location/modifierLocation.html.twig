@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+input[type=date], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  }
+  #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+<head>
+<title>Ajouter une chambre</title>
+</head>
+
+<body>
+
+<ul>
+  
+  
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Chambres</a>
+    <div class="dropdown-content">
+      <a href="/addchambre">Ajouter une chambres</a>
+      <a href="/viewChambres">Gestion des chambres</a>
+    </div>
+  </li>
+
+  <li><a href="/viewLocations">Locations</a></li>
+</ul>
+
+<h1>Modifier la location pour la chambre n°{{chambre.num}} </h1>
+
+<form method="POST" action= "/modifierLocation/{{location.id}}">
+  <label for="">Nom locataire</label><br>
+  <input type="text" id="nom" name="nom"><br><br>
+
+  <label for="">Prénom locataire</label><br>
+  <input type="text" id="prenom" name="prenom"><br><br>
+
+  <label for="">Telephone</label><br>
+  <input type="number" id="tel" name="telephone"><br><br>
+
+  <label for="">Date début</label><br>
+  <input type="date" id="datedeb" name="datedeb"><br><br>
+
+  <label for="">Date fin</label><br>
+  <input type="date" id="datefin" name="datefin"><br><br>
+
+
+  <input type="submit" value="Ajouter">
+</form>
+
+{% if bool is defined %}
+{% if bool == false %}
+    <p>La période de location séléctionné existe déjà pour cette chambre, veuiller sélectionner une autre période</p>
+{% endif %}
+{% endif %}
+
+
+</body>
+</html>
+
